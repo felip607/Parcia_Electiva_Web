@@ -1,0 +1,60 @@
+<%- include('plantillas/header'); -%>
+
+<div style="background-color: rgb(31, 31, 31); padding: 50px 0px 50px 0px; color: white; text-align: center;">
+    <h1>parcial ejs electiva</h1>
+    <p class="mb-5">Contenido del json</p>
+</div>
+
+<div class="container" style="padding: 20px;">
+    <h2>Filtrar Personajes de Star Wars</h2>
+    <form method="GET" action="/" class="mb-4">
+        <div class="mb-3">
+            <label for="homeworld" class="form-label">Planeta:</label>
+            <select id="homeworld" name="homeworld" class="form-select">
+                <option value="">Selecciona un planeta</option>
+                <option value="Tatooine">Tatooine</option>
+                <option value="Alderaan">Alderaan</option>
+                <option value="Naboo">Naboo</option>
+                <!-- Agrega más opciones según tus datos -->
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="species" class="form-label">Especie:</label>
+            <select id="species" name="species" class="form-select">
+                <option value="">Selecciona una especie</option>
+                <option value="Human">Human</option>
+                <option value="Droid">Droid</option>
+                <option value="Wookiee">Wookiee</option>
+                <!-- Agrega más opciones según tus datos -->
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+    <h2>Personajes de Star Wars</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Planeta</th>
+                <th>Especie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (data) { %>
+                <% data.forEach(personaje => { %>
+                    <tr>
+                        <td><%= personaje.name %></td>
+                        <td><%= personaje.homeworld %></td>
+                        <td><%= personaje.species %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="3">No hay datos disponibles</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('plantillas/footer'); -%>
