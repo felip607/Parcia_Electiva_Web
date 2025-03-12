@@ -9,7 +9,7 @@ let archivoJson = undefined;
 const pathFile = path.resolve('./resources/starwar.json');
 fs.readFile(pathFile, { encoding: 'utf8' }, (err, data) => {
   if (!err) {
-    archivoJson = JSON.parse(data); // Asegúrate de parsear el JSON
+    archivoJson = JSON.parse(data);
   } else {
     archivoJson = null;
   }
@@ -27,7 +27,7 @@ route.get('/', (req, res) => {
     data = data.filter(personaje => personaje.species === species);
   }
 
-  res.render('home', { data }); // Pasa archivoJson a la vista home.ejs
+  res.render('home', { data }); 
 });
 
 export default route;
